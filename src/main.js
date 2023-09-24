@@ -96,7 +96,7 @@ async function main() {
       console.log("1 - Add task;");
       console.log("2 - See all tasks;");
       console.log("3 - Update status;");
-      console.log("4 - Delete taks;");
+      console.log("4 - Delete task;");
       console.log("5 - Exit;");
   
       console.log("---------------------------------")
