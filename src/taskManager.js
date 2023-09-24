@@ -1,11 +1,9 @@
-//import { v4 as uuidv4 } from 'uuid';
-
 class Task{
         /**
      * Constructor for task.
      * @param {number} id - Task id.
      * @param {string} name - Task name.
-     * @returns {string} - Task status.
+     * @param {string} status - Task status.
      */
     constructor(id, name, status){
         this._id = id;
@@ -48,12 +46,18 @@ class TaskManager{
             else return true;
         });
 
+        //Rewrite id for each task
+        this._tasks.forEach((task, index) => {
+            task._id = index + 1;
+        });
+
         return found;
     }
 
     /**
      * Update task status from the list
-     * @param {number} id - Task id to be removed.
+     * @param {number} id - Task id to update status.
+     * @param {string} status - It can be "To do", "In progress" or "Done" 
      */
     updateTaskStatus(id, status){
         this._tasks.forEach((task) => {
@@ -65,12 +69,13 @@ class TaskManager{
 
     /**
      * Show task present in the list
-     * @returns
+     * @returns {number} - number of tasks;
      */
     showTasks(){
         let numberOfTasks = 0;
         this._tasks.forEach((task) => {
             task.printSelf();
+            console.log("-------------------")
             numberOfTasks += 1;
         });
         return numberOfTasks;
@@ -78,3 +83,5 @@ class TaskManager{
 }
 
 module.exports = {Task, TaskManager};
+
+
